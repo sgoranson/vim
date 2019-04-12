@@ -1,0 +1,70 @@
+{
+    "coc.preferences.colorSupport": true,
+    "coc.preferences.enableFloatHighlight": true,
+
+    "coc.preferences.formatOnType": true,
+    "coc.preferences.hoverTarget": "float",
+
+    "codeLens.enable": true,
+    "diagnostic.enable": true,
+    "diagnostic.messageTarget": "float",
+    "diagnostic.virtualText": false,
+    "diagnostic.virtualTextPrefix": "VT",
+
+    "list.maxPreviewHeight": 100,
+    "list.maxHeight": 30,
+
+    "prettier.printWidth": 120,
+    "prettier.tabWidth": 4,
+    "prettier.useTabs": false,
+
+    "python.jediEnabled": false,
+    "python.linting.enabled": true,
+
+    "signature.target": "float",
+    "signature.enable": true,
+    "signature.maxWindowHeight": 100,
+
+    "snippets.autoTrigger": true,
+
+
+    "suggest.autoTrigger": "always",
+    "suggest.echodocSupport": true,
+    "suggest.enablePreview": true,
+    "suggest.maxPreviewWidth": 100,
+    "suggest.minTriggerInputLength": 1,
+    "suggest.snippetIndicator": "►",
+    "suggest.triggerAfterInsertEnter": true,
+    // make vim select first item on completion
+    "suggest.noselect": true,
+    // when snippet activated and pumvisible, prefer complete completion.
+    "suggest.preferCompleteThanJumpPlaceholder": true,
+    "suggest.languageSourcePriority": 99,
+
+    "coc.source.around.priority": 1,
+    "coc.source.emoji.filetypes": null,
+    "coc.source.emoji.enable": true,
+    "javascript.suggest.completeFunctionCalls": true,
+    "html.experimental.custom.attributes": [],
+    "tsserver.npm": "/usr/bin/npm",
+    "tsserver.log": "verbose",
+
+    // Snippets
+    //    "snippets.ultisnips.directories": ["/home/steve/.config/nvim/snippets"],
+    "snippets.ultisnips.directories": ["./snippets"],
+    "snippets.ultisnips.pythonVersion": 3,
+    "languageserver": {
+        "efm": {
+            "command": "efm-langserver",
+            // custom config path
+            "args": ["-c", "/home/steve/.config/efm-langserver/config.yaml"],
+            "filetypes": ["vim", "eruby"]
+        },
+        "bash": {
+            "command": "bash-language-server",
+            "args": ["start"],
+            "filetypes": ["sh", "bash"],
+            "ignoredRootPaths": ["~"]
+        }
+    }
+}

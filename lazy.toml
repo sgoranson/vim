@@ -1,0 +1,570 @@
+[[plugins]]
+repo =  'ryanoasis/vim-devicons'
+on_source = 'denite.nvim'
+depends = 'denite.nvim'
+hook_add = '''
+  let g:webdevicons_enable_denite = 1
+  let g:webdevicons_enable_vimfiler = 1
+  let g:webdevicons_enable = 1
+'''
+
+
+# lightline {{{
+# [[plugins]]
+# repo =  'itchyny/lightline.vim'                # shows marks, m/ shortcuts
+# depends =  'vim-devicons'
+# on_event = 'VimEnter'
+# hook_add = '''
+
+
+#              "\   'filename': '%<%f',
+
+
+#  let g:lightline = {
+#              \ 'component': {
+#              \   'lineinfo': ' %3l:%-2L'
+#              \ },
+#              \ 'component_function': {
+#              \   'gitdir': 'LightlineGitdir',
+#              \   'filename': 'LightlineFilename',
+#              \   'readonly': 'LightlineReadonly',
+#              \   'fugitive': 'LightlineFugitive',
+#              \   'mygutter': 'MyGitGutter'
+#              \ },
+#              \ 'separator': { 'left': '', 'right': '' },
+#              \ 'subseparator': { 'left': '', 'right': '' }
+#              \ }
+
+# 		" Currently, wombat, solarized, powerline, jellybeans, Tomorrow,
+# 		" Tomorrow_Night, Tomorrow_Night_Blue, Tomorrow_Night_Eighties,
+# 		" PaperColor, seoul256, landscape, one, darcula, molokai, materia,
+# 		" material, OldHope, nord, 16color and deus are available.
+# 		" The default value is:
+
+#   let g:lightline.colorscheme = 'darcula'
+
+
+# "  let g:lightline.tabline = {
+# "      \ 'left': [ [ 'tabs' ] ],
+# "      \ 'right': [ [ 'absolutepath' ] ]
+#         " \ }
+
+
+
+#  let g:lightline.active = {
+#              \ 'left': [ [ 'mode', 'paste' ],
+#              \           [ 'fugitive', 'gitdir', 'relativepath'] ],
+#              \ 'right': [ [ 'lineinfo' ],
+#              \            [ 'percent' ],
+#              \            [ 'fileformat', 'fileencoding', 'filetype' ] ] }
+
+
+# function! LightlineGitdir()
+#   let root = fnamemodify(get(b:, 'git_dir'), ':~:h')
+# "  let path = expand('%:p')
+# "  if path[:len(root)-1] ==# root
+# "    return path[len(root)+1:]
+# "  endif
+# "  return expand('%')
+# return root
+# endfunction
+
+
+
+#  function! MyGitGutter()
+#      if ! exists('*GitGutterGetHunkSummary')
+#                  \ || ! get(g:, 'gitgutter_enabled', 0)
+#                  \ || winwidth('.') <= 90
+#          return ''
+#      endif
+#      let symbols = [
+#                  \ g:gitgutter_sign_added . ' ',
+#                  \ g:gitgutter_sign_modified . ' ',
+#                  \ g:gitgutter_sign_removed . ' '
+#                  \ ]
+#      let hunks = GitGutterGetHunkSummary()
+#      let ret = []
+#      for i in [0, 1, 2]
+#          if hunks[i] > 0
+#              call add(ret, symbols[i] . hunks[i])
+#          endif
+#      endfor
+#      return join(ret, ' ')
+#  endfunction
+
+
+#  function! MyFiletype()
+#      return winwidth(0) > 70 ? (strlen(&filetype) ? &filetype . ' ' . WebDevIconsGetFileTypeSymbol() : 'no ft') : ''
+#  endfunction
+
+#  function! MyFileformat()
+#      return winwidth(0) > 70 ? (&fileformat . ' ' . WebDevIconsGetFileFormatSymbol()) : ''
+#  endfunction
+
+#  function! LightlineModified()
+#      return &ft =~ 'help\|vimfiler' ? '' : &modified ? '+' : &modifiable ? '' : '-'
+#  endfunction
+#  function! LightlineReadonly()
+#      return &ft !~? 'help\|vimfiler' && &readonly ? '⭤' : ''
+#  endfunction
+#  function! LightlineFilename()
+#      return ('' != LightlineReadonly() ? LightlineReadonly() . ' ' : '') .
+#                  \ (&ft == 'vimfiler' ? vimfiler#get_status_string() :
+#                  \  &ft == 'unite' ? unite#get_status_string() :
+#                  \  &ft == 'vimshell' ? vimshell#get_status_string() :
+#                  \ '' != expand('%:t') ? expand('%:t') : '[No Name]') .
+#                  \ ('' != LightlineModified() ? ' ' . LightlineModified() : '')
+#  endfunction
+#  function! LightlineFugitive()
+#      if &ft !~? 'vimfiler' && exists('*fugitive#head')
+#          let branch = fugitive#head()
+#          return branch !=# '' ? '⭠ '.branch : ''
+#      endif
+#      return ''
+#  endfunction
+
+
+
+
+#  let g:lightline.enable = {
+#      \ 'statusline': 1,
+#      \ 'tabline': 1
+#          \ }
+
+
+
+# '''
+# }}}
+
+
+[[plugins]]
+repo = 'Shougo/context_filetype.vim'
+
+
+[[plugins]]
+repo = 'honza/vim-snippets'
+
+# [[plugins]]
+# repo = 'SirVer/ultisnips'
+# depends = ['context_filetype.vim']
+# on_event = 'InsertCharPre'
+# hook_source = '''
+# let g:UltiSnipsExpandTrigger="<c-s>"
+# let g:UltiSnipsJumpForwardTrigger="<c-s>"
+# let g:UltiSnipsJumpBackwardTrigger="<c-p>"
+
+# let g:UltiSnipsSnippetDirectories=["UltiSnips", "snips"]
+
+#   function! UltiSnipsCallUnite()
+#     Unite -start-insert -winheight=100 -immediately -no-empty ultisnips
+#     return ''
+#   endfunction
+
+#   inoremap <silent> <F12> <C-R>=(pumvisible()? "\<LT>C-E>":"")<CR><C-R>=UltiSnipsCallUnite()<CR>
+#   nnoremap <silent> <F12> a<C-R>=(pumvisible()? "\<LT>C-E>":"")<CR><C-R>=UltiSnipsCallUnite()<CR>
+
+# '''
+
+
+
+# [[plugins]]
+# repo = 'Shougo/echodoc.vim'
+# on_event = 'CompleteDone'
+# hook_source = '''
+# let g:echodoc#type = 'virtual'
+# call echodoc#enable()
+# '''
+
+[[plugins]]
+repo =  'iamcco/devdocs.nvim'
+
+
+# denite {{{
+
+
+
+[[plugins]]
+repo =  'Shougo/neoyank.vim'
+on_event = 'TextYankPost'
+on_source = 'denite.nvim'
+hook_add = '''
+let g:neoyank#file = expand('$XDG_CACHE_HOME/neoyank.yanks')
+let g:neoyank#save_registers = [ '+', '"' ]
+let g:neoyank#limit = 10
+'''
+
+[[plugins]]
+repo =  'dunstontc/projectile.nvim'
+hook_add = '''
+     let g:projectile#enable_devicons = 1
+'''
+
+[[plugins]]
+repo = 'Shougo/denite.nvim'
+on_cmd = 'Denite'
+on_event = 'VimEnter'
+hook_source = '''
+let g:dgs#username='sgoranson'
+
+if executable('rg')
+    call denite#custom#var('file_rec', 'command', ['rg', '--files', '--hidden', '--glob', '!.git'])
+
+    call denite#custom#var('grep', 'command', ['rg'])
+    call denite#custom#var('grep', 'default_opts', ['--vimgrep', '--no-heading', '-S'])
+    call denite#custom#var('grep', 'recursive_opts', [])
+    call denite#custom#var('grep', 'pattern_opt', ['--regexp'])
+    call denite#custom#var('grep', 'separator', ['--'])
+    call denite#custom#var('grep', 'final_opts', [])
+else
+    call denite#custom#var('file_rec', 'command',
+                \ ['ag', '--follow', '--hidden', '--nocolor', '--nogroup', '-g', ''])
+endif
+
+call denite#custom#alias('source', 'file_mru/git', 'file_mru')
+call denite#custom#alias('source', 'file_rec/git', 'file_rec')
+call denite#custom#var('file_rec/git', 'command',
+        \   ['git', 'ls-files', '--cached', '--others', '--exclude-standard'] )
+
+call denite#custom#alias('source', 'grep/git', 'grep')
+call denite#custom#var('grep/git', 'command', ['git', '--no-pager', 'grep'])
+call denite#custom#var('grep/git', 'default_opts',
+        \   ['--ignore-case', '--cached', '--untracked', '--exclude-standard', '-nH'] )
+call denite#custom#var('grep/git', 'recursive_opts', [])
+call denite#custom#var('grep/git', 'pattern_opt', ['--extended-regexp'])
+call denite#custom#var('grep/git', 'separator', [])
+call denite#custom#var('grep/git', 'final_opts', [])
+
+
+"call denite#custom#var('commands', 'config', g:vim_home_dir . '/mycmds.json' )
+
+
+call denite#custom#source('unite:mapping', 'sorters', ['sorter/word'])
+
+
+call denite#custom#source('grep,grep/git,file_mru,buffer,file_rec/git,line,help,unite', 'matchers', ['matcher_substring'])
+call denite#custom#source('file_rec', 'matchers', ['matcher_substring', 'matcher_project_files'])
+call denite#custom#source('file_mru/git', 'matchers', ['matcher_substring', 'matcher_project_files'])
+call denite#custom#source('line', 'converters', ['converter_relative_word'])
+
+    call denite#custom#map('insert', '<Down>', '<C-G>')
+    call denite#custom#map('insert', '<C-j>', '<C-G>')
+    call denite#custom#map('insert', '<Up>', '<C-T>')
+    call denite#custom#map('insert', '<C-k>', '<C-T>')
+
+    call denite#custom#map('insert','<C-f>','<denite:scroll_page_forwards>','noremap')
+    call denite#custom#map('insert','<C-b>','<denite:scroll_page_backwards>','noremap')
+
+    call denite#custom#map('insert','<Tab>','<denite:move_to_next_line>','noremap')
+    call denite#custom#map('insert','<C-s>','<denite:do_action:split>','noremap')
+    call denite#custom#map('insert','<C-d>','<denite:do_action:delete>','noremap')
+    call denite#custom#map('insert','<C-v>','<denite:do_action:vsplit>','noremap')
+    call denite#custom#map('insert','<C-y>','<denite:do_action:yank>','noremap')
+    call denite#custom#map('insert','<S-Tab>','<denite:move_to_previous_line>','noremap')
+    call denite#custom#map('insert','<C-space>','<denite:choose_action>','noremap')
+
+
+    let s:denite_options = {'default' : {
+        \ 'winheight' : 15,
+        \ 'mode' : 'insert',
+        \ 'smartcase' : 'true',
+        \ 'direction': 'rightbelow',
+        \ 'statusline' : 'false',
+        \'prompt' : 'λ',
+        \ }}
+
+    function! s:profile(opts) abort
+    for fname in keys(a:opts)
+    for dopt in keys(a:opts[fname])
+call denite#custom#option(fname, dopt, a:opts[fname][dopt])
+    endfor
+    endfor
+    endfunction
+
+    runtime rc/menu.vim
+
+    call s:profile(s:denite_options)
+'''
+
+
+
+[[plugins]]
+repo =  'iamcco/denite-source.vim'
+on_source = 'denite.nvim'
+
+[[plugins]]
+repo =  'chemzqm/unite-location'
+on_source = 'denite.nvim'
+
+[[plugins]]
+repo =  'zacharied/denite-nerdfont'
+on_source = 'denite.nvim'
+
+
+[[plugins]]
+repo = 'Jagua/vim-denite-ghq'
+on_source = 'denite.nvim'
+
+
+
+[[plugins]]
+repo =  'Shougo/neomru.vim'
+on_source = 'denite.nvim'
+
+
+[[plugins]]
+repo =  'neoclide/denite-git'
+on_source = 'denite.nvim'
+
+[[plugins]]
+repo =  'neoclide/vim-easygit'
+on_source = 'denite.nvim'
+
+# [[plugins]]
+# repo =  'neoclide/denite-extra'
+# on_source = 'denite.nvim'
+# on_cmd = 'SessionLoad'
+# hook_source = '''
+# let g:denite_source_session_path=expand("~/data/nvim/session")    
+# '''
+
+[[plugins]]
+repo =  'rafi/vim-denite-session'
+on_source = 'denite.nvim'
+hook_source = '''
+let g:session_directory=expand("~/data/nvim/session")    
+'''
+
+[[plugins]]
+repo =  'Shougo/unite-outline'
+on_source = 'denite.nvim'
+
+
+[[plugins]]
+repo =  'Shougo/unite.vim'
+on_source = 'denite.nvim'
+hook_source = '''
+
+		let g:unite_source_menu_menus = {}
+		let g:unite_source_menu_menus.test = {
+		      \     'description' : 'Test menu',
+		      \ }
+		let g:unite_source_menu_menus.test.candidates = {
+		      \   'ghci'      : 'VimShellInteractive ghci',
+		      \ }
+		function g:unite_source_menu_menus.test.map(key, value)
+		  return {
+		      \       'word' : a:key, 'kind' : 'command',
+		      \       'action__command' : a:value,
+		      \     }
+		endfunction
+
+		let g:unite_source_menu_menus.test2 = {
+		      \     'description' : 'Test menu2',
+		      \ }
+		let g:unite_source_menu_menus.test2.command_candidates = {
+		      \   'python'    : 'VimShellInteractive python',
+		      \ }
+
+		let g:unite_source_menu_menus.test3 = {
+		      \     'description' : 'Test menu3',
+		      \ }
+		let g:unite_source_menu_menus.test3.command_candidates = [
+		      \   ['ruby', 'VimShellInteractive ruby'],
+		      \   ['python', 'VimShellInteractive python'],
+		      \ ]
+
+		let g:unite_source_menu_menus.zsh = {
+		      \     'description' : 'zsh files',
+		      \ }
+		let g:unite_source_menu_menus.zsh.file_candidates = [
+		      \       ['zshenv'    , '~/.zshenv'],
+		      \       ['zshrc'     , '~/.zshrc'],
+		      \       ['zplug'     , '~/.zplug'],
+		      \ ]
+
+let g:unite_enable_start_insert=1
+let g:unite_data_directory=expand("~/data/unite")
+
+"	 Like ctrlp.vim settings.
+	call unite#custom#profile('default', 'context', {
+	\   'start_insert': 1,
+	\   'winheight': 20,
+	\   'prompt-direction': 'top',
+	\   'prompt-focus': 1,
+	\   'prompt': '> ',
+	\   'direction': 'botright'
+	\ })
+
+	autocmd FileType unite call s:unite_my_settings()
+	function! s:unite_my_settings()"{{{
+	  " Overwrite settings.
+
+	  imap <buffer> <Esc>      <Plug>(unite_insert_leave)
+	  " Runs "split" action by <C-s>.
+	  imap <silent><buffer><expr> <C-v>     unite#do_action('splitv')
+	  imap <silent><buffer><expr> <C-o>     <Plug>(unite_insert_leave)
+	  imap <silent><buffer><expr> <C-p>     unite#do_action('preview')
+	  imap <silent><buffer><expr> <C-x>h     <Plug>(unite_quick_help)
+
+	  imap <buffer><expr> j unite#smart_map('j', '')
+	  imap <buffer> <TAB>   <Plug>(unite_select_next_line)
+	  imap <buffer> <c-j>   <Plug>(unite_select_next_line)
+	  imap <buffer> <c-k>   <Plug>(unite_select_previous_line)
+	  imap <buffer> '     <Plug>(unite_quick_match_default_action)
+	  nmap <buffer> '     <Plug>(unite_quick_match_default_action)
+	  nmap <buffer>  <Esc>     <Plug>(unite_all_exit)
+	  imap <buffer><expr> x
+	          \ unite#smart_map('x', "\<Plug>(unite_quick_match_jump)")
+	  nmap <buffer> x     <Plug>(unite_quick_match_jump)
+	  nmap <buffer> <C-r>     <Plug>(unite_narrowing_input_history)
+	  imap <buffer> <C-r>     <Plug>(unite_narrowing_input_history)
+	  nnoremap <silent><buffer><expr> l
+	          \ unite#smart_map('l', unite#do_action('default'))
+
+
+	  nnoremap <silent><buffer><expr> cd     unite#do_action('lcd')
+	  nnoremap <buffer><expr> S      unite#mappings#set_current_sorters(
+	          \ empty(unite#mappings#get_current_sorters()) ?
+	          \ ['sorter_reverse'] : [])
+
+	endfunction"}}}
+'''
+
+# }}}
+
+
+
+
+
+[[plugins]]
+repo = 'szw/vim-maximizer'
+hook_add = '''
+nmap <C-w>m :MaximizerToggle<CR>
+'''
+
+
+
+
+
+
+
+[[plugins]]
+repo = 'inkarkat/vim-SyntaxRange'
+
+
+
+
+
+[[plugins]]
+repo = 'Shougo/neco-syntax'
+
+
+
+
+[[plugins]]
+repo =  'Shougo/tabpagebuffer.vim'
+
+[[plugins]]
+repo =  'thinca/vim-ref'
+
+
+
+
+
+
+
+
+
+
+
+
+[[plugins]]
+repo = 'haya14busa/dein-command.vim'
+on_cmd = 'Dein'
+
+
+[[plugins]]
+repo =  'rbgrouleff/bclose.vim'                # shows marks, m/ shortcuts
+on_source = 'denite.nvim'
+
+
+
+[[plugins]]
+repo = 'chrisbra/vim-zsh'                          # :Delete, :Rename, :SudoWrite
+
+
+[[plugins]]
+repo =  'PotatoesMaster/i3-vim-syntax'                # shows marks, m/ shortcuts
+on_ft = 'i3'
+
+[[plugins]]
+repo =  'francoiscabrol/ranger.vim'                # shows marks, m/ shortcuts
+# hook_add = '''
+# let g:ranger_replace_netrw = 1
+# '''
+
+
+[[plugins]]
+repo =  'cespare/vim-toml'                # shows marks, m/ shortcuts
+on_ft = 'toml'
+
+[[plugins]]
+repo =  'maralla/vim-toml-enhance'                # shows marks, m/ shortcuts
+on_ft = 'toml'
+
+
+
+[[plugins]]
+repo =  'hiphish/info.vim'
+on_cmd = 'Info'
+hook_add = '''
+autocmd FileType info nmap N :InfoNext<CR>
+autocmd FileType info nmap P :InfoPrev<CR>
+autocmd FileType info nmap U :InfoUp<CR>
+'''
+
+
+
+
+
+
+[[plugins]]
+repo =  'yuratomo/w3m.vim'
+on_cmd = 'W3m'
+
+
+[[plugins]]
+repo =  'gregsexton/gitv'
+
+
+
+# [[plugins]]
+# repo =  'sgoranson/colorv.vim'
+# on_cmd = 'ColorV'
+# hook_add = '''
+
+# "let g:_colorv['mode'] = 'gui'
+# '''
+
+[[plugins]]
+repo = 'mattn/webapi-vim'
+on_source = 'colorv.vim'
+
+
+
+
+[[plugins]]
+repo = 'Shougo/junkfile.vim'
+on_source = 'denite.nvim'
+hook_add = '''
+  nnoremap <silent> <space>ju :<C-u>Denite junkfile:new junkfile<CR>
+'''
+
+
+[[plugins]]
+repo = 'freitass/todo.txt-vim'
+on_ft = 'todo'
+
+
+
+
